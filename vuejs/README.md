@@ -1,19 +1,25 @@
 ## Compose sample application
+
+### Use with Docker Development Environments
+
+You can open this sample in the Dev Environments feature of Docker Desktop version 4.12 or later.
+
+[Open in Docker Dev Environments <img src="../open_in_new.svg" alt="Open in Docker Dev Environments" align="top"/>](https://open.docker.com/dashboard/dev-envs?url=https://github.com/docker/awesome-compose/tree/master/vuejs)
+
 ### VueJS 
 
 Project structure:
 ```
 .
-├── docker-compose.yaml
+├── compose.yaml
 ├── README.md
 └── vuejs
     ├── Dockerfile
     └── ...
 ```
 
-[_docker-compose.yaml_](docker-compose.yaml)
+[_compose.yaml_](compose.yaml)
 ```
-version: "3.7"
 services:
   web:
     build: vuejs
@@ -23,14 +29,14 @@ services:
     - ./vuejs:/project
     - /project/node_modules
 ```
-The compose file defines an application with one service `sparkjava`.
-When deploying the application, docker-compose maps port 8080 of the web service container to port 8080 of the host as specified in the file.
+The compose file defines an application with one service `vuejs`.
+When deploying the application, docker compose maps port 8080 of the web service container to port 8080 of the host as specified in the file.
 Make sure port 8080 on the host is not already being in use.
 
-## Deploy with docker-compose
+## Deploy with docker compose
 
 ```
-$ docker-compose up -d
+$ docker compose up -d
 Creating network "vuejs_default" with the default driver
 Building web
 Step 1/8 : FROM node:13.10.1-alpine
@@ -55,7 +61,7 @@ After the application starts, navigate to `http://localhost:80` in your web brow
 
 Stop and remove the containers
 ```
-$ docker-compose down
+$ docker compose down
 Stopping vuejs_web_1 ... done
 Removing vuejs_web_1 ... done
 Removing network vuejs_default

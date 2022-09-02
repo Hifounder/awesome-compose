@@ -1,19 +1,25 @@
 ## Compose sample application
+
+### Use with Docker Development Environments
+
+You can open this sample in the Dev Environments feature of Docker Desktop version 4.12 or later.
+
+[Open in Docker Dev Environments <img src="../open_in_new.svg" alt="Open in Docker Dev Environments" align="top"/>](https://open.docker.com/dashboard/dev-envs?url=https://github.com/docker/awesome-compose/tree/master/sparkjava)
+
 ### Spark Java
 
 Project structure:
 ```
 .
-├── docker-compose.yaml
+├── compose.yaml
 ├── README.md
 └── sparkjava
     ├── Dockerfile
     └── ...
 ```
 
-[_docker-compose.yaml_](docker-compose.yaml)
+[_compose.yaml_](compose.yaml)
 ```
-version: "3.7"
 services:
   sparkjava:
     build: sparkjava
@@ -21,13 +27,13 @@ services:
     - 8080:8080
 ```
 The compose file defines an application with one service `sparkjava`.
-When deploying the application, docker-compose maps port 8080 of the sparkjava service container to port 8080 of the host as specified in the file.
+When deploying the application, docker compose maps port 8080 of the sparkjava service container to port 8080 of the host as specified in the file.
 Make sure port 8080 on the host is not already being in use.
 
-## Deploy with docker-compose
+## Deploy with docker compose
 
 ```
-$ docker-compose up -d
+$ docker compose up -d
 Creating network "sparkjava_default" with the default driver
 Building sparkjava
 Step 1/11 : FROM maven:3.6.3-jdk-11 AS build
@@ -55,7 +61,7 @@ Hello from Docker!
 
 Stop and remove the containers
 ```
-$ docker-compose down
+$ docker compose down
 Stopping sparkjava_sparkjava_1 ... done
 Removing sparkjava_sparkjava_1 ... done
 Removing network sparkjava_default
